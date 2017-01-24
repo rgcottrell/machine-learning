@@ -11871,9 +11871,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>By default, the smartcab takes no action and simply idles at the intersection.</p>
+<p>By default, the Smartcab takes no action and simply idles at the intersection.</p>
 <p>Even though the agent is not responding, it is still receiving rewards and penalties based on its compliance (or lack thereof) of traffic regulations. These are relatively small rewards or penalties for moving or not moving when required to do so.</p>
-<p>The rewards it receives are strongly correlated with the state of the traffic light. At a red light, the smartcab is rewarded for lawfully stopping at the intersection. When the light turns green, the rewards are more interesting. If, by chance, the intersection is blocked by another car, the smartcab will receive a positive reward for yielding to oncoming traffic. However, if the road ahead is clear, the smartcab is penalized for for not moving forward.</p>
+<p>The rewards it receives are strongly correlated with the state of the traffic light. At a red light, the Smartcab is rewarded for lawfully stopping at the intersection. When the light turns green, the rewards are more interesting. If, by chance, the intersection is blocked by another car, the Smartcab will receive a positive reward for yielding to oncoming traffic. However, if the road ahead is clear, the S|martcab is penalized for for not moving forward.</p>
 
 </div>
 </div>
@@ -11918,11 +11918,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <code>agent.py</code> module is responsible for controlling the agent driving the smartcab. There are several flags that can be set to modify the behavior of the smartcab. Three important flags are:</p>
+<p>The <code>agent.py</code> module is responsible for controlling the agent driving the Smartcab. There are several flags that can be set to modify the behavior of the Smartcab. Three important flags are:</p>
 <ul>
-<li><code>enforce_deadline</code>: This flag will decide whether the smartcab will be required to reach its destination within the specified time. With the flag off, the smartcab is free take as much time as it needs to reach the destination. If the flag is set, however, the smartcab is required to reach its destination within the time limit or the simulation will end in failure.</li>
-<li><code>n_test</code>: This flag determines the number of trial runs the simulator will run.</li>
-<li><code>learning</code>: This flag will determine whether the smartcab will attempt to exploit what it has learned from its environment or simply fall back to making random choices. Even when using what it has learned, the smartcab will still occassionally explore by making random choices. Of course, none of the learning or decision logic has been implemented yet!</li>
+<li><code>enforce_deadline</code>: This flag will decide whether the Smartcab will be required to reach its destination within the specified target deadline. If the flag is set, the Smartcab is required to reach its destination within the time limit or the simulation will end in failure. If the flag is off, however, the Smartcab is allowed to continue operating for additional time. However even when deadlines are not enforced, there is a hard  deadline of -100, at which point the trial will end. When the deadline is enforced, the reward will be adjusted by a penalty depending on how much time is remaining.</li>
+<li><code>n_test</code>: This flag determines the number of testing trial the simulator will run after the Smartcab has completed its training.</li>
+<li><code>learning</code>: This flag will determine whether the Smartcab will attempt attempt to learn from it's environment. If the flag is not set, the Smartcab will be limited to taking random actions. If the flag is set, however, the Smartcab will operate under an epsilon-greedy strategy. The learning Smartcab will try to exploit what it has learned by selecting actions with the maximum Q-value score. However, with epsilon probability it will attempt to explore more of the state space by choosing actions at random.</li>
 </ul>
 <p>In <code>enironment.py</code>, the <code>act()</code> method of the <code>Environment</code> class is called when an an agent performs an action. The function performs the requested action and calculates the reward for for taking (or failing to take) the action.</p>
 <p>In <code>simulator.py</code>, the <code>render_text()</code> prints simulated trial data to the console, while <code>render()</code> updates the GUI display.</p>
@@ -13652,7 +13652,7 @@ JElSLUxMSZIkSZIkqRYmpiRJkiRJklSL/w/x657nviRe+QAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Making random decisions is not a good strategy for the smartcab!</p>
+<p>Making random decisions is not a good strategy for the Smartcab!</p>
 <p>The agent makes bad decisions approximately 35% of the time. In fact, more than 4% of the time it's decisions lead to major accidents, and around 6% of the time its decisions lead to minor accidents.</p>
 <p>Given that the agent was making random decisions, it's actually surprising that it was able to reach it's destination twice over the course of the trials. It makes sense that most of the time the random actions would not lead to successful completion.</p>
 <p>The agent is still subject to the same rewards and penalties as it was when it didn't move, however, now that it is capable of actually driving, it is subject to even more rewards and penalties. Additional rewards involve following waypoints or reaching it's destination. It is also subject to more severe penalties for traffic violations or risky maneuvers likely to result in minor or major accidents. The agent has been heavily penalized the significant number of accidents caused when taking random actions.</p>
@@ -13820,7 +13820,7 @@ $$ \epsilon_{t+1} = \epsilon_{t} - 0.05, \hspace{10px}\textrm{for trial number }
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_default-learning&#39; file from the default Q-Learning simulation</span>
@@ -15763,7 +15763,7 @@ $$ \epsilon = a^t, \textrm{for } 0 < a < 1 \hspace{50px}\epsilon = \frac{1}{t^2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_improved-learning&#39; file from the improved Q-Learning simulation</span>
@@ -17757,10 +17757,10 @@ SZKkoTAxJUmSJEmSpKEwMSVJkiRJkqSh+F+ebNImifiYSgAAAABJRU5ErkJggg==
 <p><strong>Answer:</strong></p>
 <p>According to the rules and reward structure of this simulation, the correct optimal policy is relatively easy to describe algorithmically. We can use this as a baseline to explore the policy that the agent actually used. A few examples of optimal policy choices would be:</p>
 <ul>
-<li>If the light is red, take no action.</li>
-<li>If the light is green and the waypoint is to the right, move rightt.</li>
-<li>If the light is green and the waypoint is to the left, move left unless their is an oncoming car that is continuing straight ahead or turning right.</li>
-<li>If the light is green and the waypoint is forward, move forward if there are no oncoming cars or if the oncoming car is continuing straight ahead.</li>
+<li>If the light is red, take no action (see below for a discussion of turning right on a red light).</li>
+<li>If the light is green and the waypoint is forward, move forward.</li>
+<li>If the light is green and the waypoint is to the right, move right.</li>
+<li>If the light is green and the waypoint is to the left, move left unless their is an oncoming car that intends to continue straight ahead or turn right.</li>
 </ul>
 <p>We can find examples of the policy learned by the agent by examining the logs of the states and their associated Q-values. The states consist of the tuples (waypoint, light, oncoming).</p>
 
@@ -17777,7 +17777,7 @@ SZKkoTAxJUmSJEmSpKEwMSVJkiRJkqSh+F+ebNImifiYSgAAAABJRU5ErkJggg==
  -- right : 1.78
  -- None : 0.00
  -- left : 0.00</code></pre>
-<p>In this case, the agent has learned the optimal choice of safely turning right when the oncoming car is turning onto the opposite side of the road. It's interesting to note that only one of the possible actions for this state has been explored. Even with the small number of states in the state space and the large number of trials taken, we can't be assured that every possible state/action pair has been explored!</p>
+<p>In this case, the agent has learned the optimal choice of turning right. It's interesting to note that only one of the possible actions for this state has been explored. Even with the small number of states in the state space and the large number of trials taken, we can't be assured that every possible state/action pair has been explored!</p>
 
 <pre><code>('right', 'red', 'forward')
  -- forward : -8.11
@@ -17796,7 +17796,7 @@ SZKkoTAxJUmSJEmSpKEwMSVJkiRJkqSh+F+ebNImifiYSgAAAABJRU5ErkJggg==
  -- right : -18.07
  -- None : 1.69
  -- left : -35.91</code></pre>
-<p>As discussed previously, the lack of a left sensor means that it is not safe to turn right on a red light. In two of the three states, the Smartcab got into an accident while trying to turn right on a red and has learned not to repeat that. In the first, state, however, the Smartcab has gotten some feedback that a right turn may be an acceptable option.</p>
+<p>As discussed previously, the lack of a left sensor means that it is not safe to turn right on a red light. In two of the three states, the Smartcab got into an accident while trying to turn right on a red and has learned not to repeat that. In the first, state, however, the Smartcab has gotten some feedback that a right turn may be an acceptable option but fortunately it received a higher score for taking no action.</p>
 <p>On the whole, the Smartcab has been able to learn pretty much the optimal action for each available state. The small number of available states made it easy for us to inspect the generated Q-table and reason about what it's actions would be under various situations. If we had opted to include more sensors, however, the increase in the state space would have made investigating the learned policies considerable more difficult.</p>
 
 </div>
